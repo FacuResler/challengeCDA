@@ -27,6 +27,7 @@ public class PathServiceImpl implements PathService {
         Station source = stationService.getStationById(dto.getSourceId());
         Station destination = stationService.getStationById(dto.getDestinationId());
         Path path = new Path();
+        path.setId(id);
         path.setSource(source);
         path.setDestination(destination);
         path.setCost(dto.getCost());
