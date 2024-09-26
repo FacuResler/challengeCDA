@@ -1,6 +1,8 @@
 package com.challenge.cda.services;
 
-import java.util.List;
+import com.challenge.cda.dto.request.PathRequestDto;
+
 
 public interface PathService {
+    void createPath(Long id, PathRequestDto dto);
 }

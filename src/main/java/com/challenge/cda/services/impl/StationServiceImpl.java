@@ -1,6 +1,5 @@
 package com.challenge.cda.services.impl;
 
-import com.challenge.cda.dto.StationDTO;
 import com.challenge.cda.dto.request.StationRequestDto;
 import com.challenge.cda.entity.Station;
 import com.challenge.cda.repository.StationRepository;
@@ -17,10 +16,16 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public void  createStation(Long id, StationRequestDto dto) {
+    public void createStation(Long id, StationRequestDto dto) {
         Station station = new Station();
         station.setName(dto.getName());
         station.setId(id);
         stationRepository.save(station);
+    }
+
+    @Override
+    public Station getStationById(Long id) {
+        return stationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontro station id: " + id));
     }
 }
