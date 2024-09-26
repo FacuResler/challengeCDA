@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 public class Path {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
