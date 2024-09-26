@@ -11,12 +11,12 @@
 2. *Desde un terminal, estando en la ruta principal del proyecto, ejecutar los siguientes comandos:*
 
     - Construir el JAR de la aplicación:
-      bash
+  
       mvn clean install
 
 
     - Hacer build de Docker y levantar la aplicación:
-      bash
+      
       docker-compose up --build
 
 
