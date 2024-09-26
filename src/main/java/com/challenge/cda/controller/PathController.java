@@ -3,6 +3,7 @@ package com.challenge.cda.controller;
 import com.challenge.cda.dto.request.PathRequestDto;
 import com.challenge.cda.dto.response.PathResponseDto;
 import com.challenge.cda.services.PathService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class PathController {
 
 
     @PutMapping("/{pathId}")
-    public void createPath(@PathVariable Long pathId, @RequestBody PathRequestDto dto){
+    public void createPath(@PathVariable Long pathId,  @Valid @RequestBody PathRequestDto dto){
         pathService.createPath(pathId,dto);
     }
 

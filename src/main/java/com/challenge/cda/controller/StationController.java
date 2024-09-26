@@ -2,6 +2,8 @@ package com.challenge.cda.controller;
 
 import com.challenge.cda.dto.request.StationRequestDto;
 import com.challenge.cda.services.StationService;
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,9 +15,8 @@ public class StationController {
         this.stationService = stationService;
     }
     @PutMapping("/{stationId}")
-    public void createStation(@PathVariable Long stationId, @RequestBody StationRequestDto dto){
+    public void createStation(@PathVariable Long stationId, @Valid @RequestBody StationRequestDto dto){
         stationService.createStation(stationId,dto);
     }
-
 
 }
