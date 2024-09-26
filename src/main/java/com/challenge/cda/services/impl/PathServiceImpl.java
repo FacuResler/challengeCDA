@@ -40,19 +40,27 @@ public class PathServiceImpl implements PathService {
         Station sourceStation = stationService.getStationById(sourceId);
         Station destinationStation = stationService.getStationById(destinationId);
 
+        if (sourceStation == null || destinationStation == null) {
+            throw new IllegalArgumentException("Source or destination station not found.");
+        }
+
         Map<Long, List<Path>> graph = buildGraph();
         Map<Long, Double> minDistance = new HashMap<>();
         Map<Long, Long> previousStation = new HashMap<>();
         PriorityQueue<StationNode> queue = initializeQueue(sourceStation);
 
+        minDistance.put(sourceStation.getId(), 0.0);
+
         while (!queue.isEmpty()) {
             StationNode current = queue.poll();
+
             if (current.getStationId().equals(destinationStation.getId())) {
                 return buildResponse(destinationStation, previousStation, minDistance);
             }
 
             processNeighbors(current, graph, minDistance, previousStation, queue);
         }
+
 
         return null;
     }
@@ -95,17 +103,13 @@ public class PathServiceImpl implements PathService {
         Map<Long, List<Path>> graph = new HashMap<>();
 
         for (Path path : allPaths) {
-            graph
-                    .computeIfAbsent(path.getSource().getId(), k -> new ArrayList<>())
-                    .add(path);
-            graph
-                    .computeIfAbsent(path.getDestination().getId(), k -> new ArrayList<>())
-                    .add(new Path(path.getId(), path.getDestination(), path.getSource(),path.getCost()));
+            graph.computeIfAbsent(path.getSource().getId(), k -> new ArrayList<>()).add(path);
+            graph.computeIfAbsent(path.getDestination().getId(), k -> new ArrayList<>())
+                    .add(new Path(path.getId(), path.getDestination(), path.getSource(), path.getCost()));
         }
 
         return graph;
     }
-
 
     private static class StationNode {
         private final Long stationId;
@@ -124,4 +128,5 @@ public class PathServiceImpl implements PathService {
             return cost;
         }
     }
+
 }

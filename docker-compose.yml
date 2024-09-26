@@ -6,8 +6,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_APPLICATION_NAME: "CDA"
-      SPRING_DATASOURCE_URL: "jdbc:h2:mem:cdaDB"
+      SPRING_DATASOURCE_URL: "jdbc:h2:mem:cdaDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;"
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.h2.Driver"
       SPRING_DATASOURCE_USERNAME: "test"
       SPRING_DATASOURCE_PASSWORD: "password"
