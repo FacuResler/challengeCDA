@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "c5f1adc9-2739-4895-a38b-6fad2a3d7c2d",
+		"name": "CDA challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24319378"
+	},
+	"item": [
+		{
+			"name": "createStation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Barcelona\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cda/stations/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cda",
+						"stations",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPath",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sourceId\": 12,\r\n    \"destinationId\": 13,\r\n    \"cost\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cda/paths/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cda",
+						"paths",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPaths",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cda/paths/12/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cda",
+						"paths",
+						"12",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
